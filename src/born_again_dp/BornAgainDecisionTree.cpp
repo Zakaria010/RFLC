@@ -232,16 +232,30 @@ void BornAgainDecisionTree::buildOptimal()
 	int indexBottom; 
 	int indexTop;
 	int currentIndex;
+	int cfeIndex;
 	if((params->instance).empty()) {
 		indexBottom = 0;
 		indexTop = (int)fspaceFinal.nbCells - 1;
 	}
 	else{
 		currentIndex = fspaceFinal.cellToKey(params->instance);
-		if(currentIndex >= 40000) indexBottom = currentIndex - 40000;
-		else indexBottom = 0;
-		if(currentIndex <= (int)fspaceFinal.nbCells -40001) indexTop = currentIndex + 40000;
-		else indexTop = (int)fspaceFinal.nbCells - 1;
+		if((params->cfe).empty()){
+			if(currentIndex >= 40000) indexBottom = currentIndex - 40000;
+			else indexBottom = 0;
+			if(currentIndex <= (int)fspaceFinal.nbCells -40001) indexTop = currentIndex + 40000;
+			else indexTop = (int)fspaceFinal.nbCells - 1;
+		}
+		else{
+			cfeIndex = fspaceFinal.cellToKey(params->cfe);
+			if(cfeIndex<currentIndex) {
+				indexBottom = cfeIndex;
+				indexTop = min(2 * currentIndex - cfeIndex, (int)fspaceFinal.nbCells - 1);
+			} 
+			else{
+				indexBottom = max(2 * currentIndex - cfeIndex,0);
+				indexTop = cfeIndex;
+			}
+		}
 	}
 	
 	//if ((params->BottomL).empty()) indexBottom = 0;

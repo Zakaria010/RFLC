@@ -56,6 +56,7 @@ public:
 	//vector<int> BottomL;
 	//vector<int> TopR;
 	vector<int> instance;
+	vector<int> cfe;
 
 	// Constructor
 	Commandline(int argc, char* argv[])
@@ -84,6 +85,8 @@ public:
 					seed = atoi(argv[i + 1]);
 				else if (std::string(argv[i]) == "-instance")
 					instance = parse_vector(argv[i+1], ',');
+				else if (std::string(argv[i]) == "-cfe")
+					cfe = parse_vector(argv[i+1], ',');
 				//else if (std::string(argv[i]) == "-bottom")
 				//	BottomL = parse_vector(argv[i+1], ',');
 				//else if (std::string(argv[i]) == "-top")

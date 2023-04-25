@@ -49,6 +49,7 @@ public:
 	//vector<int> BottomL;
 	//vector<int> TopR;
 	vector<int> instance;
+	vector<int> cfe;
 
 	/* DATASET INFORMATION */
 	std::string datasetName;		// Name of the dataset
@@ -60,7 +61,7 @@ public:
 	
 	
 	/* CONSTRUCTOR -- Reading main problem parameters from the input file */
-	Params(std::ifstream & inputFile, int nbTrees, int objectiveFunction, int seed, vector<int> instance) : nbTrees(nbTrees), objectiveFunction(objectiveFunction), seed(seed), instance(instance)
+	Params(std::ifstream & inputFile, int nbTrees, int objectiveFunction, int seed, vector<int> instance, vector<int> cfe) : nbTrees(nbTrees), objectiveFunction(objectiveFunction), seed(seed), instance(instance), cfe(cfe)
 	{
 		nbCellsSampled = 1000; // Currently setting manually the number of manufactured samples and seed
 		generator.seed(seed);

@@ -13,7 +13,7 @@ int main(int argc, char** argv)
 		{
 			/* READING INPUT RANDOM FOREST */
 			std::cout << "----- READING RANDOM FOREST from " << c.instance_name << std::endl;
-			Params params(inputFile, c.nbTrees, c.objectiveFunction,c.seed,c.instance);
+			Params params(inputFile, c.nbTrees, c.objectiveFunction,c.seed,c.instance,c.cfe);
 			RandomForest randomForest(&params, inputFile);
 
 			/* CONSTRUCTING THE BORN-AGAIN TREE */
